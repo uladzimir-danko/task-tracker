@@ -64,7 +64,4 @@ public class UserJsonObject {
     	
         this.aaData = aaData;
     }
-
-    
-
 }
