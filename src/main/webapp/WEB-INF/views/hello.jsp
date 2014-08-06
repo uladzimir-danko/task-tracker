@@ -23,7 +23,7 @@
 	<%@include file="header.jsp" %>
 	<h1>${title}</h1>
  
-	<sec:authorize access="hasRole('ROLE_USER')">
+	<sec:authorize access="hasRole('ROLE_DEVELOPER')">
 		<!-- For login user -->
  
 		<c:if test="${pageContext.request.userPrincipal.name != null}">

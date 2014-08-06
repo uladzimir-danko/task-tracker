@@ -9,8 +9,8 @@
     <!-- enable use-expressions -->
 	<http auto-config="true" use-expressions="true">
  
-		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/index**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/admin**" access="hasRole('ROLE_MANAGER')" />
+		<intercept-url pattern="/index**" access="hasRole('ROLE_DEVELOPER')"/>
  
 		<!-- access denied page -->
 		<access-denied-handler error-page="/error403" />

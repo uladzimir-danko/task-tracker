@@ -165,7 +165,7 @@ public class MyController {
         	User user = new User();
     		UserRole userRole = new UserRole();
     		
-    		userRole.setRole("ROLE_USER");
+    		userRole.setRole("ROLE_DEVELOPER");
     		user.setUsername(userFormRegistration.getUsername());
     		user.setLanguage(userFormRegistration.getLanguage());
     		user.setEnabled(true);
