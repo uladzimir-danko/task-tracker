@@ -49,3 +49,6 @@ INSERT INTO Users (`username`, `password`, `enabled`, `language` ) VALUES
 INSERT INTO UserRoles (`user_role_id`, `username`, `role`) VALUES  
  (2, 'admin', 'ROLE_MANAGER'),  
  (1, 'admin', 'ROLE_DEVELOPER'); 
+ 
+INSERT INTO Tasks (`taskname`, `description`, `status`, `projectname`, `username` ) VALUES  
+ ('first task', 'read', 1, `ExampleProject`, `danko`);  

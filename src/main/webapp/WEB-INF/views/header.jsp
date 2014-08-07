@@ -54,11 +54,14 @@
 				</c:if>
 	
 	<sec:authorize access="hasRole('ROLE_DEVELOPER')">
-	<a class="log" href="/spring/index" ><button>
-		<spring:message code="label.users" /></button>
+	<a class="log" href="/spring/index" >
+		<button><spring:message code="label.users" /></button>
 	</a>
-	</sec:authorize>
-	
+
+	<a class="log" href="/spring/projects" >
+		<button><spring:message code="label.projects" /></button>
+	</a>
+	</sec:authorize>	
 	
 	<sec:authorize access="hasRole('ROLE_MANAGER')">
 		

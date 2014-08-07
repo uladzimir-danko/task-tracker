@@ -92,7 +92,7 @@ public class Task {
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
-    @Cascade(CascadeType.DELETE)
+    @Cascade(CascadeType.ALL)
 	private Set<Comment> comments = new HashSet<Comment>(0);  
     
     public Set<Comment> getComments() {

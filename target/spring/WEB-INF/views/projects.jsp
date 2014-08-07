@@ -22,7 +22,10 @@ $(document).ready(function() {
         "sort": "projectname",
         "sAjaxSource": "springProjectPaginationDataTables",
         "aoColumns": [
-            { "mData": "projectname" },
+            { "mData": "projectname", "mRender": function(data, type, full) { 
+            		return '<a href="projects/' + data + '">'+ data +'</a>'
+       			}             	
+            },
             { "mData": "description" },  
         ]
     } );

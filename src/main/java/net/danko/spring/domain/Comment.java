@@ -33,12 +33,12 @@ public class Comment {
     	return description;
     }
     
-    public void setLanguage(String parameter) {
+    public void setDescription(String parameter) {
     	this.description = parameter;
     }
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "TASK_ID", nullable = false)
     private Task task;
     
     public Task getTask() {

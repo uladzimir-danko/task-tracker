@@ -9,6 +9,7 @@ import net.danko.spring.service.ProjectService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,11 +24,12 @@ public class ProjectsController {
 	@Autowired
     private ProjectService projectService;
 	
-	@RequestMapping(value = "/projects", method = RequestMethod.GET)
-    public ModelAndView listProjects() {
+	@RequestMapping(value = "/projects/{projectname}", method = RequestMethod.GET)
+    public ModelAndView listProjects(@PathVariable("projectname") String projectname) {
 		
 		ModelAndView model = new ModelAndView();
-        model.setViewName("projects");
+		model.addObject("projectname", projectname);
+        model.setViewName("redirect:/tasks");
 
         return model;
     }	
@@ -48,6 +50,15 @@ public class ProjectsController {
         String json2 = gson.toJson(projectJsonObject);
 
         return json2;
+    }
+	
+	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+    public ModelAndView listProjects() {
+		
+		ModelAndView model = new ModelAndView();
+        model.setViewName("projects");
+
+        return model;
     }
 
 }
