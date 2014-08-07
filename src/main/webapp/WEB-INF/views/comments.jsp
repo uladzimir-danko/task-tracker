@@ -6,9 +6,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-	<title><spring:message code="label.title" /></title>
+	<title>${currentTask.getTaskname()}</title>
 	
-<title>Spring pagination using data tables</title>
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jtable.js"></script>
@@ -47,21 +46,35 @@ $(document).ready(function() {
 
 <%@include file="header.jsp" %>
 
+<h1><spring:message code="label.task" /> : ${currentTask.getTaskname() } </h1>
+<div><spring:message code="label.status" /> : ${currentTask.getStatus() } </div>
+<div><spring:message code="label.developer" /> : ${currentTask.getUsername() }</div>
+
+<form:form method="post" action="/spring/editTask/${task_id}" modelAttribute="task">
+	
+	<sec:authorize access="hasRole('ROLE_DEVELOPER')">
+		<spring:message code="label.status" />
+		<form:select path="status" items="${statusList}" />
+	</sec:authorize>
+	
+	<sec:authorize access="hasRole('ROLE_MANAGER')">
+		<spring:message code="label.developer" />
+		<form:select path="username" items="${userList}" />
+	</sec:authorize>
+	
+	<input type="submit"
+				value="<spring:message code="label.edit"/>" />
+</form:form>
+
 <h2><spring:message code="label.comments" /></h2>
+
+<a class="log" href="/spring/tasks?projectname=${currentTask.getProject().getProjectname()}" >
+	<button><spring:message code="label.toProject" /></button>
+</a>
 
 <a class="log" href="/spring/addComment/${task_id}" >
 	<button><spring:message code="label.addComment" /></button>
 </a>
-
-<form:form method="post" action="/spring/editTask/${task_id}" modelAttribute="task">
-	<spring:message code="label.status" />
-	<form:select path="status" items="${statusList}" />
-	
-	<spring:message code="label.developer" />
-	<form:select path="username" items="${userList}" />
-	<input type="submit"
-				value="<spring:message code="label.edit"/>" />
-</form:form>
 
 <form:form action="" method="GET">
 <table width="100%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
@@ -69,8 +82,8 @@ $(document).ready(function() {
         <thead>
             <tr>
                 <th><spring:message code="label.comment" /></th> 
-                <th></th>
-                <th></th>
+                <th width="80px"></th>
+                <th width="80px"></th>
             </tr>
         </thead>       
     </table>

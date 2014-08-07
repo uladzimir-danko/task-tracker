@@ -4,6 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <html>
 <head>
+	<title>Task-Tracker</title>
 	<%@ page isELIgnored="false" %>
 	<link href="<c:url value="/css/body.css" />" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.js"></script>

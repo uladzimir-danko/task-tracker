@@ -21,7 +21,7 @@
 
 	<div >	
 	
-	<h3><spring:message code="label.registration" /></h3>
+	<h3><spring:message code="label.edit" /></h3>
 	
 	<c:if test="${not empty msg}">
 			<div class="error">${msg}</div>

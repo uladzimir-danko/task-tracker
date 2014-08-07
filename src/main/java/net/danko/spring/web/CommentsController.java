@@ -48,7 +48,8 @@ public class CommentsController {
 		statusList.add("complete");
 		
 		model.addObject("userList", userList);
-		model.addObject("statusList", statusList);		
+		model.addObject("statusList", statusList);	
+		model.addObject("currentTask", taskService.getTaskById(Integer.parseInt(task_id)));
 		model.addObject("task", new Task());
 		model.addObject("task_id", task_id);
         model.setViewName("comments");

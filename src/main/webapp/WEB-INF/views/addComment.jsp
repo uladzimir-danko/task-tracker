@@ -20,10 +20,6 @@
 	<%@include file="header.jsp" %>
 
 	<div >	
-	
-	<c:if test="${not empty msg}">
-			<div class="error">${msg}</div>
-		</c:if>
 		
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 	<form:form method="post" action="/spring/addComment/${task_id}" modelAttribute="comment">

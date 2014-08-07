@@ -1,7 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
 <html>
-<header> <link href="<c:url value="/css/body.css" />" rel="stylesheet"> </header>
+<head> 
+	<title>Task-Tracker</title>
+	<link href="<c:url value="/css/body.css" />" rel="stylesheet"> 
+</head>
 <body class="bodybuilder">
 	<%@include file="header.jsp" %>
 	<h1><spring:message code="label.grat" /> : ${url}</h1>

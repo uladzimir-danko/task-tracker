@@ -79,7 +79,7 @@ public class Task {
     	this.username = parameter;
     }
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PROJECTNAME", nullable = false)
     private Project project;
     

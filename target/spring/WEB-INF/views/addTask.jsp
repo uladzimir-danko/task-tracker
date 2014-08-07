@@ -22,10 +22,6 @@
 	<div >	
 	
 	<h3><spring:message code="label.addTask" /></h3>
-	
-	<c:if test="${not empty msg}">
-			<div class="error">${msg}</div>
-		</c:if>
 		
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 	<form:form method="post" action="/spring/addTask/${projectname}" modelAttribute="task">

@@ -24,13 +24,10 @@ $(document).ready(function() {
         "aoColumns": [
             {
             	"mData": "projectname", "mRender": function(data, type, full) {
-            		return '<a href="projects/' + data + '">link</a>'
+            		return '<a href="projects/' + data + '">Open</a>'
             	}
             },
-            { "mData": "projectname", "mRender": function(data, type, full) { 
-            		return '<a href="projects/' + data + '">'+ data +'</a>'
-       			}             	
-            },
+            { "mData": "projectname" },
             { "mData": "description" },  
         ]
     } );
@@ -46,17 +43,19 @@ $(document).ready(function() {
 
 <h2><spring:message code="label.projects" /></h2>
 
-<a class="log" href="/spring/newProject" >
-	<button><spring:message code="label.newProject" /></button>
-</a>
+<sec:authorize access="hasRole('ROLE_MANAGER')">
+	<a class="log" href="/spring/newProject" >
+		<button><spring:message code="label.newProject" /></button>
+	</a>
+</sec:authorize>
 
 <form:form action="" method="GET">
 <table width="100%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-            	<th></th>
-                <th><spring:message code="label.projectsName" /></th>
+            	<th width="40px"; align="center"></th>
+                <th width="200px"><spring:message code="label.projectsName" /></th>
                 <th><spring:message code="label.description" /></th> 
             </tr>
         </thead>       

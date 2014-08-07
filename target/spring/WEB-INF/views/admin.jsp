@@ -48,9 +48,9 @@ $(document).ready(function() {
 
 <%@include file="header.jsp" %>
 
-<h2><spring:message code="label.users" /></h2>
+<h2><spring:message code="label.developers" /></h2>
 		
-<a href="registration"><button><spring:message code="label.registration" /></button></a>
+<a href="registration"><button><spring:message code="label.addDeveloper" /></button></a>
 
 
 <form:form action="" method="GET">

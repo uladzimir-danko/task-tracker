@@ -10,7 +10,16 @@
 	<http auto-config="true" use-expressions="true">
  
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_MANAGER')" />
-		<intercept-url pattern="/index**" access="hasRole('ROLE_DEVELOPER')"/>
+		<intercept-url pattern="/addTask**" access="hasAnyRole('ROLE_MANAGER', 'ROLE_DEVELOPER')" />
+		<intercept-url pattern="/index**" access="hasAnyRole('ROLE_DEVELOPER', 'ROLE_MANAGER')"/>
+ 		<intercept-url pattern="/addComment**" access="hasRole('ROLE_DEVELOPER')" />
+ 		<intercept-url pattern="/projects**" access="hasAnyRole('ROLE_MANAGER', 'ROLE_DEVELOPER')" />
+ 		<intercept-url pattern="/editUser**" access="hasRole('ROLE_MANAGER')" />
+ 		<intercept-url pattern="/editComment**" access="hasRole('ROLE_DEVELOPER')" />
+ 		<intercept-url pattern="/comments**" access="hasAnyRole('ROLE_MANAGER', 'ROLE_DEVELOPER')" />
+		<intercept-url pattern="/newProject**" access="hasRole('ROLE_MANAGER')" />
+		<intercept-url pattern="/tasks**" access="hasAnyRole('ROLE_MANAGER', 'ROLE_DEVELOPER')" />
+		<intercept-url pattern="/registration**" access="hasRole('ROLE_MANAGER')" />
  
 		<!-- access denied page -->
 		<access-denied-handler error-page="/error403" />

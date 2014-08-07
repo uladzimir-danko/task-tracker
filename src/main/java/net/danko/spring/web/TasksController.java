@@ -117,11 +117,11 @@ public class TasksController {
 			
 			taskBuffer.setStatus(task.getStatus());            
         }       
+		
 		if (task.getUsername() != null) {
 			
 			taskBuffer.setUsername(task.getUsername());
-		}
-        	 
+		}        	 
         	taskService.updateTask(taskBuffer);
         	
         	model.setViewName("redirect:/comments?task_id=" + task_id);       

@@ -24,7 +24,7 @@ $(document).ready(function() {
         
         "aoColumns": [
             { "mData": "task_id", "mRender": function(data, type, full) { 
-        			return '<a href="tasks/' + data + '">link</a>'
+        			return '<a href="tasks/' + data + '">Open</a>'
    				}            	
             },
             { "mData": "taskname" },
@@ -54,11 +54,11 @@ $(document).ready(function() {
     <table id="tasks" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-            	<th></th>
-                <th><spring:message code="label.taskName" /></th>
+            	<th width="40px"></th>
+                <th width="200px"><spring:message code="label.taskName" /></th>
                 <th><spring:message code="label.description" /></th> 
-                <th><spring:message code="label.developer" /></th>
-                <th><spring:message code="label.status" /></th>
+                <th width="200px"><spring:message code="label.developer" /></th>
+                <th width="60px"><spring:message code="label.status" /></th>
             </tr>
         </thead>       
     </table>
