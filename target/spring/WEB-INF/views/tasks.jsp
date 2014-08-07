@@ -24,18 +24,13 @@ $(document).ready(function() {
         
         "aoColumns": [
             { "mData": "task_id", "mRender": function(data, type, full) { 
-        			return '<a href="tasks/' + data + '">' + 'Link</a>'
+        			return '<a href="tasks/' + data + '">link</a>'
    				}            	
             },
+            { "mData": "taskname" },
             { "mData": "description" }, 
             { "mData": "username" },
-            { "mData": "status", "mRender": function(data, type, full) { 
-            	if(!status) {
-            		return '<spring:message code="label.active" />' }
-            	else {
-            		return '<spring:message code="label.complete" />' }
-       			}
-            },
+            { "mData": "status" },
         ]
     } );
 
@@ -48,12 +43,18 @@ $(document).ready(function() {
 
 <%@include file="header.jsp" %>
 
-<form:form action="" method="GET">
 <h2><spring:message code="label.tasks" /></h2>
+
+<a class="log" href="/spring/addTask/${projectname}" >
+	<button><spring:message code="label.addTask" /></button>
+</a>
+
+<form:form action="" method="GET">
 <table width="100%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
     <table id="tasks" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
+            	<th></th>
                 <th><spring:message code="label.taskName" /></th>
                 <th><spring:message code="label.description" /></th> 
                 <th><spring:message code="label.developer" /></th>

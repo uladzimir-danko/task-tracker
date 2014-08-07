@@ -2,6 +2,7 @@ package net.danko.spring.web;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import net.danko.spring.domain.Comment;
@@ -9,6 +10,7 @@ import net.danko.spring.domain.CommentJsonObject;
 import net.danko.spring.domain.Task;
 import net.danko.spring.service.CommentService;
 import net.danko.spring.service.TaskService;
+import net.danko.spring.service.UserRoleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,10 +35,21 @@ public class CommentsController {
 	@Autowired
     private TaskService taskService;
 	
+	@Autowired
+    private UserRoleService userRoleService;
+	
 	@RequestMapping(value = "/comments", method = RequestMethod.GET)
     public ModelAndView showComments(@RequestParam("task_id") String task_id,
     		ModelAndView model) {
 		
+		List<String> userList = userRoleService.listDeveloper();
+		List<String> statusList = new ArrayList<String>();
+		statusList.add("active");
+		statusList.add("complete");
+		
+		model.addObject("userList", userList);
+		model.addObject("statusList", statusList);		
+		model.addObject("task", new Task());
 		model.addObject("task_id", task_id);
         model.setViewName("comments");
 
@@ -89,8 +102,7 @@ public class CommentsController {
         	comment.setTask(task);  
         	commentService.addComment(comment);
         	
-        	model.setViewName("redirect:/comments?task_id=" 
-        			+ comment.getTask().getTask_id());            
+        	model.setViewName("redirect:/comments?task_id=" + task_id);            
         }
 
         return model;
@@ -119,8 +131,8 @@ public class CommentsController {
 	
 	@RequestMapping(value = "/editComment/{comment_id}", method = RequestMethod.POST)
     public ModelAndView saveEditComment(@ModelAttribute("comment") Comment comment,
-            BindingResult result,
-            @PathVariable("comment_id") String comment_id) throws UnsupportedEncodingException {
+            BindingResult result, @PathVariable("comment_id") String comment_id) 
+            		throws UnsupportedEncodingException {
 		
 		ModelAndView model = new ModelAndView();
 		if (result.hasErrors()) {

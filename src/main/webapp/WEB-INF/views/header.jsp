@@ -71,9 +71,9 @@
 	</sec:authorize>
 	 			
 	<span style="float: right;">  
-    				<a class="language"  href="?language=en">en</a>  
+    				<a class="language"  href="/spring/welcome?language=en">en</a>  
     				|  
-    				<a class="language" href="?language=ru">ru</a>  
+    				<a class="language" href="/spring/welcome?language=ru">ru</a>  
 				</span> 
 </div>	 
 		</td>

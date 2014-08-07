@@ -53,18 +53,18 @@ public class Task {
     	return description;
     }
     
-    public void setLanguage(String parameter) {
+    public void setDescription(String parameter) {
     	this.description = parameter;
     }  
     
     @Column(name = "STATUS")
-    private Boolean status;
+    private String status;
     
-    public Boolean getStatus() {
+    public String getStatus() {
     	return status;
     }
     
-    public void setStatus(Boolean parameter) {
+    public void setStatus(String parameter) {
     	this.status = parameter;
     }
     

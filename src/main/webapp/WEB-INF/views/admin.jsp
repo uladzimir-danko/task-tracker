@@ -20,10 +20,16 @@ $(document).ready(function() {
         "bProcessing": false,
         "bServerSide": false,
         "sort": "username",
-        "sAjaxSource": "springPaginationDataTables",
+        "sAjaxSource": "springAdminPaginationDataTables",
         "aoColumns": [
             { "mData": "username" },
             { "mData": "language" },  
+            {
+                "mData": "username", "mRender": function(data, type, full) { 
+                  	return '<a href="editUser/' + data
+                  		+ '" class="editor_remove"><spring:message code="label.edit" /></a>'
+                 }
+            },
             {
                "mData": "username", "mRender": function(data, type, full) { 
                 	return '<a href="delete/' + data
@@ -42,14 +48,19 @@ $(document).ready(function() {
 
 <%@include file="header.jsp" %>
 
-<form:form action="" method="GET">
 <h2><spring:message code="label.users" /></h2>
-<table width="70%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
+		
+<a href="registration"><button><spring:message code="label.registration" /></button></a>
+
+
+<form:form action="" method="GET">
+<table width="100%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th><spring:message code="label.name" /></th>
                 <th><spring:message code="label.language" /></th> 
+                <th></th>
                 <th></th>
             </tr>
         </thead>       

@@ -18,6 +18,11 @@ public class UserDAOImpl implements UserDAO {
     	
         sessionFactory.getCurrentSession().save(user);
     }
+    
+public void updateUser(User user) {
+    	
+        sessionFactory.getCurrentSession().update(user);
+    }
 
     @SuppressWarnings("unchecked")
     public List<User> listUser() {

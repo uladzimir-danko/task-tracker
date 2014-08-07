@@ -1,6 +1,7 @@
 package net.danko.spring.web;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import net.danko.spring.domain.Project;
@@ -9,6 +10,8 @@ import net.danko.spring.service.ProjectService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,5 +73,23 @@ public class ProjectsController {
 		
 		return model;		
 	}
+	
+	@RequestMapping(value = "/newProject", method = RequestMethod.POST)
+    public ModelAndView createProject(@ModelAttribute("project") Project project,
+            BindingResult result) throws UnsupportedEncodingException {
+		
+		ModelAndView model = new ModelAndView();
+		if (result.hasErrors()) {
+			
+            model.setViewName("registration");            
+        } else {        	
+        	
+        	projectService.addProject(project);
+        	
+        	model.setViewName("redirect:/projects");            
+        }
+
+        return model;
+    }
 
 }

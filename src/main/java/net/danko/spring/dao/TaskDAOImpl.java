@@ -5,6 +5,7 @@ import java.util.List;
 import net.danko.spring.domain.Comment;
 import net.danko.spring.domain.Task;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,6 +40,17 @@ public class TaskDAOImpl implements TaskDAO {
     					"FROM Task as task left join task.comment :comment")
     					.setParameter("comment", sessionFactory.getCurrentSession()
     							.get(Comment.class, comment_id));
+    }
+    
+    public void updateTask(Task task) {
+    	
+    	Query query = sessionFactory.getCurrentSession().createQuery(
+    			"update Task set status = :message, username = :user" +
+				" where task_id = :id");
+		query.setParameter("message", task.getStatus());
+		query.setParameter("user", task.getUsername());
+		query.setParameter("id", task.getTask_id());
+		query.executeUpdate();
     }
 
 }

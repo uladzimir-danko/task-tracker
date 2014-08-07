@@ -19,7 +19,7 @@ $(document).ready(function() {
     $("#comments").dataTable( {
         "bProcessing": false,
         "bServerSide": false,
-        "sort": "comment_id",
+        //"sort": "comment_id",
         "sAjaxSource": "springCommentsPaginationDataTables/" + "${task_id}",        
         "aoColumns": [
             { "mData": "description" }, 
@@ -47,12 +47,23 @@ $(document).ready(function() {
 
 <%@include file="header.jsp" %>
 
+<h2><spring:message code="label.comments" /></h2>
+
 <a class="log" href="/spring/addComment/${task_id}" >
-		<button><spring:message code="label.addComment" /></button>
-	</a>
+	<button><spring:message code="label.addComment" /></button>
+</a>
+
+<form:form method="post" action="/spring/editTask/${task_id}" modelAttribute="task">
+	<spring:message code="label.status" />
+	<form:select path="status" items="${statusList}" />
+	
+	<spring:message code="label.developer" />
+	<form:select path="username" items="${userList}" />
+	<input type="submit"
+				value="<spring:message code="label.edit"/>" />
+</form:form>
 
 <form:form action="" method="GET">
-<h2><spring:message code="label.comments" /></h2>
 <table width="100%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
     <table id="comments" class="display" cellspacing="0" width="100%">
         <thead>

@@ -38,7 +38,7 @@ public class Project {
     	return description;
     }
     
-    public void setLanguage(String parameter) {
+    public void setDescription(String parameter) {
     	this.description = parameter;
     }  
     

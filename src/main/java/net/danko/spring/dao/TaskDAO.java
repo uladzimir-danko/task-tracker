@@ -12,5 +12,7 @@ public interface TaskDAO {
     public Task getTaskById(int task_id);
     
     public Task getTaskByComment(int comment_id);
+    
+    public void updateTask(Task task);
 
 }

@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 <form:form action="" method="GET">
 <h2><spring:message code="label.users" /></h2>
-<table width="70%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
+<table width="100%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>

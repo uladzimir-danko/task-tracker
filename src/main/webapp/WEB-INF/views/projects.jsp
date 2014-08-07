@@ -22,6 +22,11 @@ $(document).ready(function() {
         "sort": "projectname",
         "sAjaxSource": "springProjectPaginationDataTables",
         "aoColumns": [
+            {
+            	"mData": "projectname", "mRender": function(data, type, full) {
+            		return '<a href="projects/' + data + '">link</a>'
+            	}
+            },
             { "mData": "projectname", "mRender": function(data, type, full) { 
             		return '<a href="projects/' + data + '">'+ data +'</a>'
        			}             	
@@ -50,6 +55,7 @@ $(document).ready(function() {
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
+            	<th></th>
                 <th><spring:message code="label.projectsName" /></th>
                 <th><spring:message code="label.description" /></th> 
             </tr>

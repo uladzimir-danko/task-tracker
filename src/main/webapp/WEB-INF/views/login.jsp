@@ -38,11 +38,6 @@
 				<td colspan='2'><input name="submit" type="submit"
 				  value=<spring:message code="label.submit" /> /></td>
 			</tr>
-			<tr>
-				<td>
-					<a href="registration"><spring:message code="label.registration" /></a>
-				</td>
-			</tr>
 		  </table>		  
  
 		  <input type="hidden" name="${_csrf.parameterName}"

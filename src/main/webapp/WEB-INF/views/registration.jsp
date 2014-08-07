@@ -27,7 +27,6 @@
 			<div class="error">${msg}</div>
 		</c:if>
 		
-	<c:if test="${pageContext.request.userPrincipal.name == null}">
 	<form:form method="post" action="registration" modelAttribute="userFormRegistration">
 
 	<table>
@@ -57,7 +56,6 @@
 		</tr>
 	</table>
 	</form:form>
-	</c:if>
 	</div>
 
 <%@include file="footer.jsp" %>

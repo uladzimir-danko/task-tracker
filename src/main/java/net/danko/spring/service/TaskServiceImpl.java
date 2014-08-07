@@ -37,5 +37,11 @@ public class TaskServiceImpl implements TaskService {
     	
     	return taskDAO.getTaskByComment(comment_id);
     }
+    
+    @Transactional
+    public void updateTask(Task task) {
+    	
+    	taskDAO.updateTask(task);
+    }
 
 }
