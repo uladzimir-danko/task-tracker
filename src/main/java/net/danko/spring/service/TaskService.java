@@ -14,5 +14,7 @@ public interface TaskService {
     public Task getTaskByComment(int comment_id);
     
     public void updateTask(Task task);
+    
+    public void deleteDeveloper(String username);
 
 }

@@ -6,10 +6,10 @@
  </head>
  <body>
   <hr>
-  <table style="width:100%;" >
-  	<tr> 
-  		<th style="width: 100%;" >
-  		<a class="textstyle" >WebApplication of Uladzimir Danko</a>
+  <table>
+  	<tr align="center"> 
+  		<th align="center">
+  			WebApplication of Uladzimir Danko
   		</th>
   	</tr>  
   </table>  

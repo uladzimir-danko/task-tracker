@@ -6,6 +6,7 @@
 <html>
 <head> 
 	<link href="<c:url value="/css/header.css" />" rel="stylesheet"> 
+	<link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">
 	<script> 
 		function formSubmit() {
 			document.getElementById("logoutForm").submit();
@@ -17,7 +18,7 @@
    } 
   </style>
 </head>
-<body link="black" vlink="black" alink="black">
+<body class="color">
 
 <table class="table">
 	<tr>
@@ -27,12 +28,12 @@
 		</td>
 		
 		<td width=300px>
-			<h2><a href="/spring/">Example Spring Application </a></h2>
+			<h2><a href="/spring/">Task-Tracker</a></h2>
 		</td>
 	
 		<td>
 
-<div class="btn-group">	
+<div>	
 	
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
 				<form action="${logoutUrl}" method="post" id="logoutForm">
@@ -42,38 +43,45 @@
  
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 			 		
-			 		<a class="log"	href="javascript:formSubmit()"><button>
+			 		<a class="log"	href="javascript:formSubmit()">
+			 		<button type="button" class="btn btn-primary" data-toggle="button">
 			 			<spring:message code="label.logout" /></button>
 			 		</a>
 			 		
 					</c:if>
 				<c:if test="${pageContext.request.userPrincipal.name == null}">
 					<a class="log" href="/spring/login">
-						<button><spring:message code="label.login" /></button>
+						<button type="button" class="btn btn-primary" data-toggle="button">
+						<spring:message code="label.login" /></button>
 					</a>
 				</c:if>
 	
 	<sec:authorize access="hasRole('ROLE_DEVELOPER')">
 	<a class="log" href="/spring/index" >
-		<button><spring:message code="label.users" /></button>
+		<button type="button" class="btn btn-primary" data-toggle="button">
+		<spring:message code="label.users" /></button>
 	</a>
 
 	<a class="log" href="/spring/projects" >
-		<button><spring:message code="label.projects" /></button>
+		<button type="button" class="btn btn-primary" data-toggle="button">
+		<spring:message code="label.projects" /></button>
 	</a>
 	</sec:authorize>	
 	
 	<sec:authorize access="hasRole('ROLE_MANAGER')">
 		
 		<a class="log" href="/spring/admin">
-			<button><spring:message code="label.admin" /></button>
+			<button type="button" class="btn btn-primary" data-toggle="button">
+			<spring:message code="label.admin" /></button>
 		</a>					
 	</sec:authorize>
 	 			
 	<span style="float: right;">  
-    				<a class="language"  href="/spring/welcome?language=en"><button>en</button></a>  
-    				|  
-    				<a class="language" href="/spring/welcome?language=ru"><button>ru</button></a>  
+    				<a class="language"  href="/spring/welcome?language=en">
+    				<button type="button" class="btn btn-success" data-toggle="button">en</button></a>  
+    				 
+    				<a class="language" href="/spring/welcome?language=ru">
+    				<button type="button" class="btn btn-success" data-toggle="button">ru</button></a>  
 				</span> 
 </div>	 
 		</td>

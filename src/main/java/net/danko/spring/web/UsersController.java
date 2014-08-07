@@ -11,6 +11,7 @@ import net.danko.spring.domain.User;
 import net.danko.spring.domain.UserFormRegistration;
 import net.danko.spring.domain.UserJsonObject;
 import net.danko.spring.domain.UserRole;
+import net.danko.spring.service.TaskService;
 import net.danko.spring.service.UserRoleService;
 import net.danko.spring.service.UserService;
 import net.danko.spring.support.PasswordGenerator;
@@ -39,6 +40,9 @@ public class UsersController {
 	
 	@Autowired
     private UserRoleService userRoleService;
+	
+	@Autowired
+    private TaskService taskService;
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
@@ -186,6 +190,7 @@ public class UsersController {
     public String deleteContact(@PathVariable("username") String username) {
 
 		userRoleService.removeUserRole(username);
+		taskService.deleteDeveloper(username);
         userService.removeUser(username);        
 
         return "redirect:/admin";

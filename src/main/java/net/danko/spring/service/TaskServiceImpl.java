@@ -43,5 +43,11 @@ public class TaskServiceImpl implements TaskService {
     	
     	taskDAO.updateTask(task);
     }
+    
+    @Transactional
+    public void deleteDeveloper(String username) {
+    	
+    	taskDAO.deleteDeveloper(username);
+    }
 
 }

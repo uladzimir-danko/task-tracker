@@ -31,7 +31,6 @@ description TEXT,
 status VARCHAR(10) NOT NULL DEFAULT 'Active',
 username  VARCHAR(20),
 projectname  VARCHAR(20),
-FOREIGN KEY (username) REFERENCES Users(username),
 FOREIGN KEY (projectname) REFERENCES Projects(projectname) 
 );
 	

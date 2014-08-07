@@ -7,6 +7,7 @@
 	<title>Task-Tracker</title>
 	<%@ page isELIgnored="false" %>
 	<link href="<c:url value="/css/body.css" />" rel="stylesheet">
+	<link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
     function doAjax() {

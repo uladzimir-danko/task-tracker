@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="<c:url value="/js/javascript.js" />" /></script>
 <link href="<c:url value="/css/body.css" />" rel="stylesheet">
+<link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">
 <title>Registration</title>
 <style>
 	.err {

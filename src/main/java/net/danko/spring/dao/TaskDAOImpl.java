@@ -52,5 +52,15 @@ public class TaskDAOImpl implements TaskDAO {
 		query.setParameter("id", task.getTask_id());
 		query.executeUpdate();
     }
+    
+    public void deleteDeveloper(String username) {
+    	
+    	Query query = sessionFactory.getCurrentSession().createQuery(
+    			"update Task set username = :unkown" +
+				" where username = :name");
+		query.setParameter("name", username);
+		query.setParameter("unkown", "unkown");
+		query.executeUpdate();
+    }
 
 }
