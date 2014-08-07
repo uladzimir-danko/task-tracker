@@ -36,7 +36,7 @@ public class TaskDAOImpl implements TaskDAO {
     public Task getTaskByComment(int comment_id) {
     	
     	return (Task) sessionFactory.getCurrentSession().createQuery(
-    					"FROM Task task left join task.comment :comment")
+    					"FROM Task as task left join task.comment :comment")
     					.setParameter("comment", sessionFactory.getCurrentSession()
     							.get(Comment.class, comment_id));
     }

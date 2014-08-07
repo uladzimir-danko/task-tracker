@@ -36,7 +36,7 @@ public class ProjectsController {
 	
 	@RequestMapping(value = "/springProjectPaginationDataTables", method = RequestMethod.GET, produces = 
 	        "application/json")
-	    public @ResponseBody String springProjectPaginationDataTables() 
+	public @ResponseBody String springProjectPaginationDataTables() 
 	        throws IOException {
 		
 		List<Project> projectsList = projectService.listProject();
@@ -60,5 +60,15 @@ public class ProjectsController {
 
         return model;
     }
+	
+	@RequestMapping(value = "newProject", method = RequestMethod.GET)
+	public ModelAndView registration() {
+		
+		ModelAndView model = new ModelAndView();
+		model.addObject("project", new Project());
+		model.setViewName("newProject");
+		
+		return model;		
+	}
 
 }

@@ -84,7 +84,7 @@ public class CommentsController {
         } else {        	
         	
         	Task task = taskService.getTaskById(
-        			2);
+        			Integer.parseInt(task_id));
         	
         	comment.setTask(task);  
         	commentService.addComment(comment);
@@ -104,6 +104,40 @@ public class CommentsController {
         commentService.removeComment(Integer.parseInt(comment_id)); 
 
         return url;
+    }
+	
+	@RequestMapping(value = "/editComment/{comment_id}", method = RequestMethod.GET)
+    public ModelAndView editeComment(@PathVariable("comment_id") String comment_id) {
+		
+		ModelAndView model = new ModelAndView();
+		model.addObject("comment", commentService
+				.getCommentById(Integer.parseInt(comment_id)));
+        model.setViewName("editComment");
+
+        return model;
+    }
+	
+	@RequestMapping(value = "/editComment/{comment_id}", method = RequestMethod.POST)
+    public ModelAndView saveEditComment(@ModelAttribute("comment") Comment comment,
+            BindingResult result,
+            @PathVariable("comment_id") String comment_id) throws UnsupportedEncodingException {
+		
+		ModelAndView model = new ModelAndView();
+		if (result.hasErrors()) {
+			
+            model.setViewName("registration");            
+        } else {        	
+        	
+        	Comment commentBufer = commentService
+        			.getCommentById(Integer.parseInt(comment_id));
+        	commentBufer.setDescription(comment.getDescription()); 
+        	commentService.updateComment(commentBufer);
+        	
+        	model.setViewName("redirect:/comments?task_id=" 
+        			+ commentBufer.getTask().getTask_id());            
+        }
+
+        return model;
     }
 
 }

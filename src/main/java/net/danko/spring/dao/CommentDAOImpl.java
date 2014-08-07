@@ -2,6 +2,7 @@ package net.danko.spring.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,5 +42,14 @@ public class CommentDAOImpl implements CommentDAO {
 	public Comment getCommentById(int comment_id) {
 		
 		return (Comment) sessionFactory.getCurrentSession().get(Comment.class, comment_id);
+	}
+	
+	public void updateComment(Comment comment) {
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("update Comment set description = :message" +
+				" where comment_id = :id");
+		query.setParameter("message", comment.getDescription());
+		query.setParameter("id", comment.getComment_id());
+		query.executeUpdate();
 	}
 }

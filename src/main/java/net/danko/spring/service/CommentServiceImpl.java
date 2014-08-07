@@ -34,5 +34,10 @@ public class CommentServiceImpl implements CommentService {
     public Comment getCommentById(int comment_id) {
     	return commentDAO.getCommentById(comment_id);
     }
+    
+    @Transactional
+    public void updateComment(Comment comment) {
+    	commentDAO.updateComment(comment);
+    }
 
 }

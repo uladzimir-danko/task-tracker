@@ -24,6 +24,12 @@ $(document).ready(function() {
         "aoColumns": [
             { "mData": "description" }, 
             {
+                "mData": "comment_id", "mRender": function(data, type, full) { 
+                  	return '<a href="editComment/' + data
+                  		+ '" class="editor_remove"><spring:message code="label.edit" /></a>'
+                 }
+            },
+            {
                "mData": "comment_id", "mRender": function(data, type, full) { 
                  	return '<a href="deleteComment/' + data
                  		+ '" class="editor_remove"><spring:message code="label.delete" /></a>'
@@ -52,6 +58,7 @@ $(document).ready(function() {
         <thead>
             <tr>
                 <th><spring:message code="label.comment" /></th> 
+                <th></th>
                 <th></th>
             </tr>
         </thead>       

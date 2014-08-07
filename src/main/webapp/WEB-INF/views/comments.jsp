@@ -24,6 +24,12 @@ $(document).ready(function() {
         "aoColumns": [
             { "mData": "description" }, 
             {
+                "mData": "comment_id", "mRender": function(data, type, full) { 
+                  	return '<a href="editComment/' + data
+                  		+ '" class="editor_remove"><spring:message code="label.edit" /></a>'
+                 }
+            },
+            {
                "mData": "comment_id", "mRender": function(data, type, full) { 
                  	return '<a href="deleteComment/' + data
                  		+ '" class="editor_remove"><spring:message code="label.delete" /></a>'
@@ -41,17 +47,19 @@ $(document).ready(function() {
 
 <%@include file="header.jsp" %>
 
+<h2><spring:message code="label.comments" /></h2>
+
 <a class="log" href="/spring/addComment/${task_id}" >
-		<button><spring:message code="label.addComment" /></button>
-	</a>
+	<button><spring:message code="label.addComment" /></button>
+</a>
 
 <form:form action="" method="GET">
-<h2><spring:message code="label.comments" /></h2>
 <table width="100%" style="border: 3px;background: rgb(243, 244, 248);"><tr><td>
     <table id="comments" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th><spring:message code="label.comment" /></th> 
+                <th></th>
                 <th></th>
             </tr>
         </thead>       
